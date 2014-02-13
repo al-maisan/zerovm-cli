@@ -40,10 +40,10 @@ class TestArgs(object):
         assert("python.tar" == args.args.binary_image)
 
     def test_unknown_binary_img_arg(self):
-        # '--binary-image' does *not* references any of the tar files passed
+        # '--binary-image' does *not* reference any of the tar files passed
         # via '--zvm-image'
         cmd_line = ("zvsh --zvm-image python.tar --zvm-image myapp.tar "
-                    "--binary-image zython.tar python myapp/main.py")
+                    "--binary-image foo.tar python myapp/main.py")
         args = zvsh.ZvArgs()
         try:
             args.parse(cmd_line.split()[1:])
