@@ -52,24 +52,42 @@ class ZvArgs:
         self.add_arguments()
 
     def add_arguments(self):
-        self.parser.add_argument('command', help='Zvsh command, can be:\n'
-                                                 '- path to ZeroVM executable\n'
-                                                 '- "gdb" (for running debugger)\n')
-        self.parser.add_argument('--zvm-image', help='ZeroVM image file(s) in the following '
-                                                     'format:\npath[,mount point][,access type]\n'
-                                                     'defaults: path,/,ro\n', action='append')
-        self.parser.add_argument('--zvm-debug', help='Enable ZeroVM debug output into zvsh.log\n',
-                                 action='store_true')
-        self.parser.add_argument('--zvm-trace', help='Enable ZeroVM trace output into zvsh.trace.log\n',
-                                 action='store_true')
-        self.parser.add_argument('--zvm-verbosity', help='ZeroVM debug verbosity level\n', type=int)
-        self.parser.add_argument('--zvm-getrc', help='If set, zvsh will exit with '
-                                                     'zerovm return code and not the application one\n',
-                                 action='store_true')
-        self.parser.add_argument('--zvm-save-dir', help='Save ZeroVM environment files into provided directory,\n'
-                                                        'directory will be created/re-created\n',
-                                 action='store')
-        self.parser.add_argument('cmd_args', help='command line arguments\n', nargs=argparse.REMAINDER)
+        self.parser.add_argument(
+            'command',
+            help='Zvsh command, can be:\n'
+                 '- path to ZeroVM executable\n'
+                 '- "gdb" (for running debugger)\n')
+        self.parser.add_argument(
+            '--zvm-image',
+            help='ZeroVM image file(s) in the following '
+                 'format:\npath[,mount point][,access type]\n'
+                 'defaults: path,/,ro\n', action='append')
+        self.parser.add_argument(
+            '--binary-image',
+            help='In the case of multiple tar files this specifies the\n'
+                 'archive that contains the binary to be extracted and\n'
+                 'passed to zerovm\n')
+        self.parser.add_argument(
+            '--zvm-debug', help='Enable ZeroVM debug output into zvsh.log\n',
+            action='store_true')
+        self.parser.add_argument(
+            '--zvm-trace',
+            help='Enable ZeroVM trace output into zvsh.trace.log\n',
+            action='store_true')
+        self.parser.add_argument(
+            '--zvm-verbosity', help='ZeroVM debug verbosity level\n', type=int)
+        self.parser.add_argument(
+            '--zvm-getrc',
+            help='If set, zvsh will exit with '
+                 'zerovm return code and not the application one\n',
+            action='store_true')
+        self.parser.add_argument(
+            '--zvm-save-dir',
+            help='Save ZeroVM environment files into provided directory,\n'
+                 'directory will be created/re-created\n', action='store')
+        self.parser.add_argument(
+            'cmd_args', help='command line arguments\n',
+            nargs=argparse.REMAINDER)
 
     def parse(self, zvsh_args):
         self.args = self.parser.parse_args(args=zvsh_args)
