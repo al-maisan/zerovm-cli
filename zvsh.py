@@ -91,6 +91,10 @@ class ZvArgs:
 
     def parse(self, zvsh_args):
         self.args = self.parser.parse_args(args=zvsh_args)
+        bin_img =  self.args.binary_image
+        if bin_img:
+            assert bin_img in self.args.zvm_image, (
+                "unknown tar file ('%s') passed to '--binary-image'" % bin_img)
 
 
 class DebugArgs(ZvArgs):
