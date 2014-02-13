@@ -49,9 +49,9 @@ class ZvArgs:
     def __init__(self):
         self.parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
         self.args = None
-        self.add_agruments()
+        self.add_arguments()
 
-    def add_agruments(self):
+    def add_arguments(self):
         self.parser.add_argument('command', help='Zvsh command, can be:\n'
                                                  '- path to ZeroVM executable\n'
                                                  '- "gdb" (for running debugger)\n')
