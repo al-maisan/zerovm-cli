@@ -49,7 +49,7 @@ class TestArgs(object):
             args.parse(cmd_line.split()[1:])
         except AssertionError, e:
             expected = (
-                "unknown tar file ('zython.tar') passed to '--binary-image'")
+                "unknown tar file ('foo.tar') passed to '--binary-image'")
             assert expected == e.msg
         else:
             pytest.fail("AssertionError not raised")
